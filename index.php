@@ -103,23 +103,23 @@
             </div>
         </section>
         <section class="container-almoco">
-    <div class="container-almoco-titulo">
-        <h3>Opções para o Almoço</h3>
-        <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
-    </div>
-    <div class="container-almoco-produtos">
-        <?php foreach ($productsFood as $food): ?>
-            <div class="container-produto">
-                <div class="container-foto">
-                    <img src="<?= $food['image'] ?>">
-                </div>
+            <div class="container-almoco-titulo">
+                <h3>Opções para o Almoço</h3>
+                <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
+            </div>
+            <div class="container-almoco-produtos">
+                <?php foreach ($productsFood as $food): ?>
+                <div class="container-produto">
+                    <div class="container-foto">
+                        <img src="<?= $food['image'] ?>">
+                    </div>
                 <p><?= $food['name'] ?></p>
                 <p><?= $food['description'] ?></p>
                 <p><?= "R$ " . $food['price'] ?></p>
+                </div>
+                 <?php endforeach; ?>
             </div>
-        <?php endforeach; ?>
-    </div>
-</section>
+        </section>
     </main>
 </body>
 </html>
