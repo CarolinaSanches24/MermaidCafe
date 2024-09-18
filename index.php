@@ -1,3 +1,65 @@
+<?php 
+    $productsCoffe = [
+        [
+            'name'=>"Café Kiki",
+            'description'=>"No Café da Kiki, a magia da infância se mistura 
+            com o aroma encantador do café fresquinho. Inspirado pelo adorável
+            anime 'Serviço de Entregas da Kiki', nosso café oferece um refúgio
+            acolhedor onde você pode relaxar e sentir a leveza do vento em suas asas, assim como a jovem bruxinha Kiki",
+            'price'=>"5.00",
+            'image'=>"img/Coffe_Kiki.jpg"
+        ],
+        [
+            'name'=>"Café Goku",
+            'description'=>"Inspirado no icônico Goku, este café é revigora
+            suas forças e compartilhar momentos especiais. Pois é um café intenso,
+            energizante e irresistível, perfeitos para recarregar suas energias
+            antes da próxima aventura",
+            'price'=>"8.00",
+            'image'=>"img/Coffe_Goku.png"
+        ],
+        [
+            'name'=>"Café da Guerreira Lunar",
+            'description'=>"Feito com um toque de baunilha e canela, ou o 'Chá Mágico',
+             uma mistura refrescante de ervas e frutas.",
+            'price'=>"8.00",
+            'image'=>"img/Cafe_Saylor.jpg"
+        ]
+    ];
+
+    $productsFood = 
+    [
+        [
+            'name'=>"Rolo de caranguejo creme de queijo gengibre wasabi",
+            'description'=>"Descubra a explosão de sabores deste delicioso 
+                rolo de caranguejo! Envolto em uma camada suave de creme de queijo cremoso,
+                cada mordida traz a frescura do caranguejo, equilibrada com
+                a picância sutil do gengibre e a intensidade do wasabi.",
+            'price'=>"38.00",
+            'image'=>"img/california-rolo-de-caranguejo-creme-de-queijo-gengibre-wasabi.jpg"
+        ],
+        [
+            'name'=>"Ramen do Ichiraku",
+            'description'=>"Um prato clássico que todo fã de Naruto ama! Um delicioso bowl de ramen
+             com macarrão fresco, caldo saboroso e coberturas como chashu (carne de porco), ovos cozidos e cebolinhas.",
+            'price'=>"28.00",
+            'image'=>"img/naruto_ramen.jpg"
+        ],
+        [
+            'name'=>"Onigiri",
+            'description'=>" Bolinhos de arroz moldados em forma de triângulo, recheados com ingredientes como umeboshi (ameixa salgada) ou salmão. Comuns em Clannad e Your Name.",
+            'price'=>"15.00",
+            'image'=>"img/Onigiri.jpg"
+        ],
+        [
+            'name'=>"Bento",
+            'description'=>"Caixas de almoço compostas por arroz, carnes, legumes e frutas, muitas vezes decoradas de forma criativa. Aprecia-se muito em animes escolares.",
+            'price'=>"35.00",
+            'image'=>"img/Bento.jpg"
+        ]
+    ];
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -28,81 +90,36 @@
                 <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
             </div>
             <div class="container-cafe-manha-produtos">
+                <?php foreach($productsCoffe as $product):?>
                 <div class="container-produto">
                     <div class="container-foto">
-                        <img src="img/cafe-cremoso.jpg">
+                    <img src="<?= $product['image']?>">
                     </div>
-                    <p>Café Cremoso</p>
-                    <p>Café cremoso irresistivelmente suave e que envolve seu paladar</p>
-                    <p>R$ 5.00</p>
+                    <p><?= $product['name']?></p>
+                    <p><?= $product['description']?></p>
+                    <p><?= "R$ " .$product ['price']?></p>
                 </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/cafe-com-leite.jpg">
-                    </div>
-                    <p>Café com Leite</p>
-                    <p>A harmonia perfeita do café e do leite, uma experiência reconfortante</p>
-                    <p>R$ 2.00</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/cappuccino.jpg">
-                    </div>
-                    <p>Cappuccino</p>
-                    <p>Café suave, leite cremoso e uma pitada de sabor adocicado</p>
-                    <p>R$ 7.00</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/cafe-gelado.jpg">
-                    </div>
-                    <p>Café Gelado</p>
-                    <p>Café gelado refrescante, adoçado e com notas sutis de baunilha ou caramelo.</p>
-                    <p>R$ 3.00</p>
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
         <section class="container-almoco">
-            <div class="container-almoco-titulo">
-                <h3>Opções para o Almoço</h3>
-                <img class= "ornaments" src="img/ornaments-coffee.png" alt="ornaments">
+    <div class="container-almoco-titulo">
+        <h3>Opções para o Almoço</h3>
+        <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
+    </div>
+    <div class="container-almoco-produtos">
+        <?php foreach ($productsFood as $food): ?>
+            <div class="container-produto">
+                <div class="container-foto">
+                    <img src="<?= $food['image'] ?>">
+                </div>
+                <p><?= $food['name'] ?></p>
+                <p><?= $food['description'] ?></p>
+                <p><?= "R$ " . $food['price'] ?></p>
             </div>
-            <div class="container-almoco-produtos">
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/bife.jpg">
-                    </div>
-                    <p>Bife</p>
-                    <p>Bife, arroz com feijão e uma deliciosa batata frita</p>
-                    <p>R$ 27.90</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/prato-peixe.jpg">
-                    </div>
-                    <p>Filé de peixe</p>
-                    <p>Filé de peixe salmão assado, arroz, feijão verde e tomate.</p>
-                    <p>R$ 24.99</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/prato-frango.jpg">
-                    </div>
-                    <p>Frango</p>
-                    <p>Saboroso frango à milanesa com batatas fritas, salada de repolho e molho picante</p>
-                    <p>R$ 23.00</p>
-                </div>
-                <div class="container-produto">
-                    <div class="container-foto">
-                        <img src="img/fettuccine.jpg">
-                    </div>
-                    <p>Fettuccine</p>
-                    <p>Prato italiano autêntico da massa do fettuccine com peito de frango grelhado</p>
-                    <p>R$ 22.50</p>
-                </div>
-            </div>
-
-        </section>
+        <?php endforeach; ?>
+    </div>
+</section>
     </main>
 </body>
 </html>
