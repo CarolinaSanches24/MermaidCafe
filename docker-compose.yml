@@ -11,6 +11,11 @@ services:
       - "9000"
     depends_on:
       - db
+    environment:
+      DB_HOST: db
+      DB_NAME: mermaid_cafe
+      DB_USER: postgres
+      DB_PASSWORD: postgres
 
   nginx:
     image: nginx:1.18
