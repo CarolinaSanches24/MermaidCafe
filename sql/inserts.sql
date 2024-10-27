@@ -15,3 +15,60 @@ INSERT INTO products (
 ) VALUES (
   'Café', 'Café da Guerreira Lunar', 'Feito com um toque de baunilha e canela, ou o ''Chá Mágico'', uma mistura refrescante de ervas e frutas.', 'Cafe_Saylor.jpg', '8.00'
 );
+
+INSERT INTO products (
+	name,
+	description,
+	price,
+	image,
+	type_product 
+) VALUES (
+	'Rolo de caranguejo',
+	'Descubra a explosão de sabores deste delicioso rolo de caranguejo! Envolto em uma camada suave de creme de queijo cremoso,cada mordida traz a frescura do caranguejo, equilibrada coma picância sutil do gengibre e a intensidade do wasabi.',
+	38.00,
+	'img/california-rolo-de-caranguejo-creme-de-queijo-gengibre-wasabi.jpg',
+	'Almoço'
+);
+
+INSERT INTO products (
+	name,
+	description,
+	price,
+	image,
+	type_product
+) VALUES (
+	'Ramen do Ichiraku',
+	'Um prato clássico que todo fã de Naruto ama! Um delicioso bowl de ramen
+             com macarrão fresco, caldo saboroso e coberturas como chashu (carne de porco), ovos cozidos e cebolinhas.',
+	28.00,
+	'img/naruto_ramen.jpg',
+	'Almoço'
+);
+
+INSERT INTO products (
+	name,
+	description,
+	price,
+	image,
+	type_product
+) VALUES (
+	'Onigiri',
+	'Bolinhos de arroz moldados em forma de triângulo, recheados com ingredientes como umeboshi (ameixa salgada) ou salmão. Comuns em Clannad e Your Name.',
+	15.00,
+	'img/Onigiri.jpg',
+	'Almoço'
+);
+
+INSERT INTO products (
+	name,
+	description,
+	price,
+	image,
+	type_product
+) VALUES (
+	'Bento',
+	'Caixas de almoço compostas por arroz, carnes, legumes e frutas, muitas vezes decoradas de forma criativa. Aprecia-se muito em animes escolares.',
+	35.00,
+	'img/Bento.jpg',
+	'Almoço'
+);

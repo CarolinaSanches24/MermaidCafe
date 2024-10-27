@@ -1,24 +1,27 @@
 <?php
 
-require_once './Config.php';
+require_once __DIR__.'/Config.php';
 
-function connect(string $host, string $db, string $user, string $password): PDO
-{
-	try {
-		$dsn = "pgsql:host=$host;port=5432;dbname=$db;";
+class ConnectionDB{
+	
+	static function connect(string $host, string $db, string $user, string $password): PDO
+	{
+		try {
+			$dsn = "pgsql:host=$host;port=5432;dbname=$db;";
+	
+			// make a database connection
 
-		// make a database connection
-        var_dump($dsn);
-		return new PDO(
-			$dsn,
-			$user,
-			$password,
-			[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-		);
-	} catch (PDOException $e) {
-		die($e->getMessage());
+			return new PDO(
+				$dsn,
+				$user,
+				$password,
+				[PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+			);
+		} catch (PDOException $e) {
+			die($e->getMessage());
+		}
 	}
+	
 }
 
-return connect($host, $db, $user, $password);
 
