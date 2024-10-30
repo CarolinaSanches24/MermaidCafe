@@ -7,5 +7,6 @@ require __DIR__ . '/src/Repository/ProductRepo.php';
 $pdo = ConnectionDB::connect($host, $db, $user, $password);
 
 $productRepo =  new ProductRepository($pdo);
-$productRepo->deleteProduct($_GET['product_id']);
+$productRepo->deleteProduct($_POST['product_id']);
 
+header("Location: admin.php");
