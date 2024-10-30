@@ -1,6 +1,8 @@
 <?php
 
 class Product{
+
+    private $product_id;
     private $name;
     private $description;
     private $price;
@@ -8,17 +10,24 @@ class Product{
     private $type_product;
 
     public function __construct(
+        int  $product_id = null,
         string $name, 
         string $description,
         float $price, 
         string $image, 
         string $type_product)
     {
+        $this->product_id = $product_id;
         $this->name = $name;
         $this->description = $description;
         $this->price = $price;
         $this->image = $image;
         $this->type_product = $type_product;
+    }
+
+    public function getId():int
+    {
+        return $this->product_id;
     }
 
     public  function getName(): string

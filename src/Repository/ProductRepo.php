@@ -19,6 +19,7 @@ class ProductRepository
 
         $dataCoffe = array_map(function ($item) {
             return new Product(
+                product_id:$item['id'],
                 name: $item['name'],
                 price: $item['price'],
                 description: $item['description'],
@@ -39,6 +40,7 @@ class ProductRepository
 
         $dataFood = array_map(function ($item) {
             return new Product(
+                product_id:$item['id'],
                 name: $item['name'],
                 price: $item['price'],
                 description: $item['description'],
@@ -58,6 +60,7 @@ class ProductRepository
 
         $dataProducts = array_map(function ($item) {
             return new Product(
+                product_id:$item['id'],
                 name: $item['name'],
                 price: $item['price'],
                 description: $item['description'],
