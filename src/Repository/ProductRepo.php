@@ -49,4 +49,23 @@ class ProductRepository
         
         return $dataFood;
     }
+
+    public function searchAllProducts()
+    {
+        $sql = "SELECT * FROM products ORDER BY price";
+        $stm = $this->pdo->query($sql);
+        $listProducts = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        $dataProducts = array_map(function ($item) {
+            return new Product(
+                name: $item['name'],
+                price: $item['price'],
+                description: $item['description'],
+                image: $item['image'],
+                type_product: $item['type_product']
+            );
+        }, $listProducts);
+
+        return $dataProducts;
+    }
 }
