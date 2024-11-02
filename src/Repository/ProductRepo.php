@@ -10,6 +10,18 @@ class ProductRepository
         $this->pdo = $pdo;
     }
 
+    private function mapToProduct(array $data): Product
+    {
+        return new Product(
+            product_id: $data['id'],
+            name: $data['name'],
+            price: $data['price'],
+            description: $data['description'],
+            image: $data['image'],
+            type_product: $data['type_product']
+        );
+    }
+
     public function optionsCoffe(): array
     {
         $sql1 = "SELECT * FROM products WHERE type_product='Café' ORDER BY price";
@@ -17,18 +29,7 @@ class ProductRepository
 
         $productsCoffe = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-        $dataCoffe = array_map(function ($item) {
-            return new Product(
-                product_id:$item['id'],
-                name: $item['name'],
-                price: $item['price'],
-                description: $item['description'],
-                image: $item['image'],
-                type_product: $item['type_product']
-            );
-        }, $productsCoffe);
-
-        return $dataCoffe;
+        return array_map([$this, 'mapToProduct'], $productsCoffe);
     }
 
     public function optionsFood(): array
@@ -38,18 +39,7 @@ class ProductRepository
         $stm = $this->pdo->query($sql2);
         $productsFood = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-        $dataFood = array_map(function ($item) {
-            return new Product(
-                product_id:$item['id'],
-                name: $item['name'],
-                price: $item['price'],
-                description: $item['description'],
-                image: $item['image'],
-                type_product: $item['type_product']
-            );
-        }, $productsFood);
-        
-        return $dataFood;
+       return array_map([$this, 'mapToProduct'], $productsFood);
     }
 
     public function searchAllProducts()
@@ -58,18 +48,7 @@ class ProductRepository
         $stm = $this->pdo->query($sql);
         $listProducts = $stm->fetchAll(PDO::FETCH_ASSOC);
 
-        $dataProducts = array_map(function ($item) {
-            return new Product(
-                product_id:$item['id'],
-                name: $item['name'],
-                price: $item['price'],
-                description: $item['description'],
-                image: $item['image'],
-                type_product: $item['type_product']
-            );
-        }, $listProducts);
-
-        return $dataProducts;
+      return  array_map([$this, 'mapToProduct'], $listProducts);
     }
 
     public function deleteProduct(int $product_id)
@@ -78,5 +57,43 @@ class ProductRepository
         $stm = $this->pdo->prepare($sql);
         $stm->bindValue(1,$product_id);
         $stm->execute();
+    }
+
+    public function saveProduct(Product $product)
+    {
+        $sql = "INSERT INTO products (name, price, description, image, type_product)
+        VALUES  (:name, :price, :description, :image, :type_product)";
+
+        $stm =  $this->pdo->prepare($sql);
+        
+        $stm->execute([
+            ':name' => $product->getName(),
+            ':price' => $product->getPrice(),
+            ':description' => $product->getDescription(),
+            ':image' => $product->getImage(),
+            ':type_product' => $product->getTypeProduct()
+        ]);
+    }
+
+    public function searchProduct(int $product_id)
+    {
+        $sql = "SELECT * FROM products WHERE  id = ?";
+        $stm = $this->pdo->prepare($sql);
+        $stm->bindValue(1, $product_id);
+        $stm->execute();
+
+        $dataProduct = $stm->fetch(PDO::FETCH_ASSOC);
+
+        if ($dataProduct) {
+            return new Product(
+                product_id: $dataProduct['id'],
+                name: $dataProduct['name'],
+                price: $dataProduct['price'],
+                description: $dataProduct['description'],
+                image: $dataProduct['image'],
+                type_product: $dataProduct['type_product']
+            );
+        }
+        return null;
     }
 }

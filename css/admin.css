@@ -9,6 +9,9 @@
 .logo-admin{
     width: 400px;
 }
+.logo-register{
+    width: 200px;
+}
 
 h2{
     font-size: 24px;
@@ -95,7 +98,7 @@ table tbody tr td a:hover, .botao-cadastrar:hover, .botao-excluir:hover{
     filter: saturate(150%);
 }
 
-.botao-cadastrar{
+.botao{
     background: #EBC181;
     color: #333B1E;
     font-weight: 600;
@@ -104,6 +107,7 @@ table tbody tr td a:hover, .botao-cadastrar:hover, .botao-excluir:hover{
     border-radius: 10px;
     padding: 10px 10px;
     border: none;
+    text-decoration: none;
 }
 
 

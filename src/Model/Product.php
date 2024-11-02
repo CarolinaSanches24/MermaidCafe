@@ -1,21 +1,13 @@
 <?php
 
 class Product{
-
-    private $product_id;
-    private $name;
-    private $description;
-    private $price;
-    private $image;
-    private $type_product;
-
     public function __construct(
-        int  $product_id = null,
-        string $name, 
-        string $description,
-        float $price, 
-        string $image, 
-        string $type_product)
+        private ?int  $product_id,
+        private string $name, 
+        private string $description,
+        private float $price, 
+        private ?string $image, 
+        private string $type_product)
     {
         $this->product_id = $product_id;
         $this->name = $name;

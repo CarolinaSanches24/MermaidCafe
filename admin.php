@@ -55,7 +55,7 @@ $dataProducts =  $productRepo->searchAllProducts();
               <td><?= $product->getTypeProduct() ?></td>
               <td><?= $product->getDescription() ?></td>
               <td><?= $product->getPriceFormat() ?></td>
-              <td><a class="botao-editar" href="editar-produto.html">Editar</a></td>
+              <td><a class="botao-editar" href="edit-product.php?product_id=<?= $product->getId() ?>">Editar</a></td>
               <td>
                 <form action="delete-product.php" method="POST">
                 <input type="hidden" name="product_id" value="<?= $product->getId() ?>">
@@ -66,10 +66,11 @@ $dataProducts =  $productRepo->searchAllProducts();
           <?php endforeach; ?>
         </tbody>
       </table>
-      <a class="botao-cadastrar" href="cadastrar-produto.html">Cadastrar produto</a>
+      <a class="botao" href="register-products.php">Cadastrar produto</a>
       <form action="#" method="post">
-        <input type="submit" class="botao-cadastrar" value="Baixar Relatório" />
+        <input type="submit" class="botao" value="Baixar Relatório" />
       </form>
+      <a class="botao" href="index.php">Home</a>
     </section>
   </main>
 </body>
