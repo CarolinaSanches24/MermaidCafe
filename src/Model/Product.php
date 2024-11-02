@@ -1,14 +1,15 @@
 <?php
 
-class Product{
+class Product
+{
     public function __construct(
         private ?int  $product_id,
-        private string $name, 
+        private string $name,
         private string $description,
-        private float $price, 
-        private ?string $image, 
-        private string $type_product)
-    {
+        private float $price,
+        private ?string $image,
+        private string $type_product
+    ) {
         $this->product_id = $product_id;
         $this->name = $name;
         $this->description = $description;
@@ -17,7 +18,7 @@ class Product{
         $this->type_product = $type_product;
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->product_id;
     }
@@ -30,26 +31,32 @@ class Product{
     {
         return $this->description;
     }
-    public function getPrice():float
+    public function getPrice(): float
     {
         return $this->price;
     }
-    public function  getImage():string
+    public function  getImage(): string
     {
         return $this->image;
     }
-    public function getTypeProduct():string
+
+    public function setImage(string $image): void
+    {
+
+        $this->image = $image;
+    }
+
+    public function getTypeProduct(): string
     {
         return $this->type_product;
     }
 
-    public function getPriceFormat():string
+    public function getPriceFormat(): string
     {
         return  number_format($this->price, 2);
     }
-    public function getImagePath():string
+    public function getImagePath(): string
     {
-        return 'img/'.$this->image;
+        return 'img/' . $this->image;
     }
-        
 }

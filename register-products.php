@@ -7,20 +7,22 @@ require __DIR__ . '/src/Repository/ProductRepo.php';
 $pdo = ConnectionDB::connect($host, $db, $user, $password);
 
 if (isset($_POST['register'])) {
+    $price = (float) str_replace(['R$', '.', ','], ['', '', '.'], $_POST['price']);
     $product = new Product(
         product_id: null,
         name: $_POST['name'],
-        price: $_POST['price'],
+        price: $price,
         description: $_POST['description'],
         type_product: $_POST['type_product'],
-        image: $_POST['image']
+        image: null 
     );
 
-    $productRepo =  new ProductRepository($pdo);
+    $productRepo = new ProductRepository($pdo);
+    $productRepo->uploadImage($_FILES,$product);
+
     $productRepo->saveProduct($product);
     header("Location: admin.php");
 }
-
 ?>
 
 <!doctype html>
@@ -51,7 +53,7 @@ if (isset($_POST['register'])) {
             <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
         </section>
         <section class="container-form">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
 
                 <label for="name">Nome</label>
                 <input type="text" id="name" name="name" placeholder="Digite o nome do produto" required>

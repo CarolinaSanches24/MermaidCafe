@@ -109,4 +109,11 @@ class ProductRepository
             ':id' => $product->getId() 
         ]);
     }
+
+    public function uploadImage(array $image, Product $product){
+        if(isset($image['image'])){
+            $product->setImage(uniqid($image['image']['name']));
+            move_uploaded_file($image['image']['tmp_name'], $product->getImagePath());
+        }
+    }
 }
