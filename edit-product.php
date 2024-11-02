@@ -16,12 +16,12 @@ if (isset($_POST['editProduct'])) {
     price: $price,
     description: $_POST['description'],
     type_product: $_POST['type_product'],
-    image: $_POST['image']
+    image: null
   );
 
   $productRepo->uploadImage($_FILES,$product);
   $productRepo->updateProduct($product);
-  
+
   header("Location:admin.php");
 } else {
   $product = $productRepo->searchProduct($_GET['product_id']);
@@ -56,8 +56,7 @@ if (isset($_POST['editProduct'])) {
       <img class="ornaments" src="img/ornaments-coffee.png" alt="ornaments">
     </section>
     <section class="container-form">
-      <form method="post">
-
+      <form method="post" enctype="multipart/form-data">
         <label for="name">Nome</label>
         <input type="text" id="name" name="name" value="<?= $product->getName() ?>" required>
 
