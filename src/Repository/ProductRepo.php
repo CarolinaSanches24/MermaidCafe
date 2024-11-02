@@ -86,4 +86,27 @@ class ProductRepository
 
         return $dataProduct ? $this->mapToProduct($dataProduct) : null;
     }
+
+    public function updateProduct(Product $product)
+    {
+       
+        $sql = "UPDATE products SET 
+        name= :name, 
+        price = :price, 
+        description= :description,
+        image = :image, 
+        type_product= :type_product
+        WHERE id = :id";
+
+        $stm = $this->pdo->prepare($sql);
+        
+        $stm->execute([
+            ':name' => $product->getName(),
+            ':price' => $product->getPrice(),
+            ':description' => $product->getDescription(),
+            ':image' => $product->getImage(),
+            ':type_product' => $product->getTypeProduct(),
+            ':id' => $product->getId() 
+        ]);
+    }
 }
