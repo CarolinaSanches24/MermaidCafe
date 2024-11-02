@@ -84,16 +84,6 @@ class ProductRepository
 
         $dataProduct = $stm->fetch(PDO::FETCH_ASSOC);
 
-        if ($dataProduct) {
-            return new Product(
-                product_id: $dataProduct['id'],
-                name: $dataProduct['name'],
-                price: $dataProduct['price'],
-                description: $dataProduct['description'],
-                image: $dataProduct['image'],
-                type_product: $dataProduct['type_product']
-            );
-        }
-        return null;
+        return $dataProduct ? $this->mapToProduct($dataProduct) : null;
     }
 }
