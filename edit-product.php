@@ -19,7 +19,7 @@ if (isset($_POST['editProduct'])) {
     image: null
   );
 
-  $productRepo->uploadImage($_FILES,$product);
+  $productRepo->uploadImage($_FILES, $product);
   $productRepo->updateProduct($product);
 
   header("Location:admin.php");

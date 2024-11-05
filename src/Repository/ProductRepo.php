@@ -94,7 +94,6 @@ class ProductRepository
         name= :name, 
         price = :price, 
         description= :description,
-        image = :image, 
         type_product= :type_product
         WHERE id = :id";
 
@@ -104,16 +103,40 @@ class ProductRepository
             ':name' => $product->getName(),
             ':price' => $product->getPrice(),
             ':description' => $product->getDescription(),
-            ':image' => $product->getImage(),
             ':type_product' => $product->getTypeProduct(),
             ':id' => $product->getId() 
         ]);
+
+        if($product->getImage() !== null){
+            
+            $this->updateImage($product);
+        }
+    }
+
+    public function updateImage (Product $product)
+    {
+        $sql = "UPDATE products SET image = :image WHERE id = :id";
+        $stm = $this->pdo->prepare($sql);
+        $stm->execute([
+            ':image' => $product->getImage(),
+            ':id' => $product->getId()
+        ]);
+
     }
 
     public function uploadImage(array $image, Product $product){
-        if(isset($image['image'])){
-            $product->setImage(uniqid($image['image']['name']));
-            move_uploaded_file($image['image']['tmp_name'], $product->getImagePath());
+        if (isset($image['image']) && $image['image']['error'] === UPLOAD_ERR_OK) {
+            // Gera um nome único para o arquivo
+            $imageName = uniqid('product_' . $product->getId() . '_') . '.' . pathinfo($image['image']['name'], PATHINFO_EXTENSION);
+            
+            $product->setImage($imageName);
+            
+            $uploadPath = $product->getImagePath();
+
+            if (move_uploaded_file($image['image']['tmp_name'], $uploadPath)) {
+                return true;  // Sucesso no upload
+            }
         }
+        return false;  // Falha no upload ou nenhuma imagem enviada
     }
 }

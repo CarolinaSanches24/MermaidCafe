@@ -35,7 +35,7 @@ class Product
     {
         return $this->price;
     }
-    public function  getImage(): string
+    public function  getImage(): string |null
     {
         return $this->image;
     }
@@ -55,7 +55,7 @@ class Product
     {
         return  number_format($this->price, 2);
     }
-    public function getImagePath(): string
+    public function getImagePath(): string 
     {
         return 'img/' . $this->image;
     }
