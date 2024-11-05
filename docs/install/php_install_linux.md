@@ -12,6 +12,15 @@ php -v
 ```php
 header("Content-type: text/php charset=utf-8");
 ```
-#### Concatenação
+### Instalação de lib para gerar pdf 
+```bash
+ composer require dompdf/dompdf
+```
 
+[Lib packagist](https://packagist.org/packages/dompdf/dompdf)
+
+#### Concatenação
+```
  <img src="<?= 'img/'.$almoco['imagem'] ?>">
+```
+

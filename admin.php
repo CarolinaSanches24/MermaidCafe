@@ -67,7 +67,7 @@ $dataProducts =  $productRepo->searchAllProducts();
         </tbody>
       </table>
       <a class="botao" href="register-products.php">Cadastrar produto</a>
-      <form action="#" method="post">
+      <form action="generatePDF.php" method="post">
         <input type="submit" class="botao" value="Baixar Relatório" />
       </form>
       <a class="botao" href="index.php">Home</a>
