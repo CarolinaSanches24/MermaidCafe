@@ -12,3 +12,5 @@ $(document).ready(function () {
 
   $('#price').maskMoney('mask');
 });
+
+//Função para ajustar formatação do campo Price
