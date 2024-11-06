@@ -18,7 +18,7 @@ class Product
         $this->type_product = $type_product;
     }
 
-    public function getId(): int
+    public function getId(): int |null
     {
         return $this->product_id;
     }
